@@ -61,14 +61,15 @@ def send_notification_email(quote: schemas.QuoteCreate):
 
 # CORS configuration
 origins = [
-    "http://localhost:5173", # Vite dev server
+    "http://localhost:5173",
     "http://localhost:5174",
     "http://localhost:3000",
+    "https://homep-production.up.railway.app", # Example production URL
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"], # For development/initial deployment, we can use wildcard or specific list
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
