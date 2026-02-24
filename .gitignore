@@ -1,0 +1,21 @@
+# .gitignore for Homep Project
+
+# Node.js
+node_modules/
+dist/
+build/
+.env
+
+# Python (Backend)
+backend/__pycache__/
+backend/venv/
+backend/.env
+backend/*.sqlite3
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
