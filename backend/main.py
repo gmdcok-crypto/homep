@@ -128,6 +128,7 @@ origins = [
     "http://localhost:5174",
     "http://localhost:3000",
     "https://homep-production.up.railway.app", # Example production URL
+    "https://effulgent-sunflower-4bc798.netlify.app",
 ]
 
 app.add_middleware(
