@@ -28,7 +28,7 @@ const SupportSection = () => {
                             {[
                                 "고신대학교복음병원", "양산부산대학교병원", "부산부민병원", "한양류마디병원",
                                 "구포성심병원", "봉생병원", "SMG연세병원", "장림한서병원",
-                                "하이트진로", "(주)국제식품", "HIKVISION", "SEWOO"
+                                "하이트진로", "(주)국제식품", "HIKVISION", "(주)지에스테크"
                             ].map((name, i) => (
                                 <div key={i} className="flex items-center justify-center p-3 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
                                     <div className="text-gray-400 font-bold text-[13px] sm:text-sm text-center filter grayscale group-hover:grayscale-0 transition-all duration-300">
