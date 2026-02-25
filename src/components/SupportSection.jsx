@@ -6,28 +6,36 @@ const SupportSection = () => {
         <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-                    {/* Major Partners */}
+                    {/* Major Partners & Clients */}
                     <div>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 font-display">주요 파트너사</h2>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-2">
-                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
-                                <img src="/images/zebra_logo.jpg" alt="Zebra" className="h-8 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" />
+                        <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 font-display">주요 파트너 및 고객사</h2>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 pt-2">
+                            {/* Global Partners */}
+                            <div className="flex items-center justify-center p-3 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <img src="/images/zebra_logo.jpg" alt="Zebra" className="h-6 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" />
                             </div>
-                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
-                                <img src="/images/tsc_logo.JPG" alt="TSC" className="h-8 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" />
+                            <div className="flex items-center justify-center p-3 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <img src="/images/tsc_logo.JPG" alt="TSC" className="h-6 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" />
                             </div>
-                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
-                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">BIXOLON</div>
+                            <div className="flex items-center justify-center p-3 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <div className="text-gray-400 font-bold text-base filter grayscale group-hover:grayscale-0 transition-all duration-300">BIXOLON</div>
                             </div>
-                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
-                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">Honeywell</div>
+                            <div className="flex items-center justify-center p-3 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <div className="text-gray-400 font-bold text-base filter grayscale group-hover:grayscale-0 transition-all duration-300">Honeywell</div>
                             </div>
-                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
-                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">HIKVISION</div>
-                            </div>
-                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
-                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">SEWOO</div>
-                            </div>
+
+                            {/* Hospitals & Corporate Clients */}
+                            {[
+                                "고신대학교복음병원", "양산부산대학교병원", "부산부민병원", "한양류마디병원",
+                                "구포성심병원", "봉생병원", "SMG연세병원", "장림한서병원",
+                                "하이트진로", "(주)국제식품", "HIKVISION", "SEWOO"
+                            ].map((name, i) => (
+                                <div key={i} className="flex items-center justify-center p-3 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                    <div className="text-gray-400 font-bold text-[13px] sm:text-sm text-center filter grayscale group-hover:grayscale-0 transition-all duration-300">
+                                        {name}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
