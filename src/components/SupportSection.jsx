@@ -6,32 +6,29 @@ const SupportSection = () => {
         <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
-                    {/* News */}
+                    {/* Major Partners */}
                     <div>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 font-display">최신 뉴스</h2>
-                        <ul className="space-y-6">
-                            <li className="flex flex-col">
-                                <span className="text-sm text-gray-500 italic">2026. 02. 15</span>
-                                <a href="#" className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors">
-                                    [신제품] 산업용 무선 바코드 스캐너 LI3608-ER 출시
-                                </a>
-                            </li>
-                            <li className="flex flex-col">
-                                <span className="text-sm text-gray-500 italic">2026. 01. 22</span>
-                                <a href="#" className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors">
-                                    블루컴, 2026 스마트 물류 산업전 참가 안내
-                                </a>
-                            </li>
-                            <li className="flex flex-col">
-                                <span className="text-sm text-gray-500 italic">2025. 12. 10</span>
-                                <a href="#" className="text-lg font-semibold text-gray-800 hover:text-blue-600 transition-colors">
-                                    블루컴, 프리미엄 DID 멀티비젼 설치 사례 (강남 지식산업센터)
-                                </a>
-                            </li>
-                        </ul>
-                        <a href="#" className="inline-block mt-8 text-blue-600 font-bold hover:underline group">
-                            전체 뉴스 보기 <span className="inline-block transform group-hover:translate-x-1 transition-transform">&rarr;</span>
-                        </a>
+                        <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 font-display">주요 파트너사</h2>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-2">
+                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <img src="/images/zebra_logo.jpg" alt="Zebra" className="h-8 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" />
+                            </div>
+                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <img src="/images/tsc_logo.JPG" alt="TSC" className="h-8 object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300" />
+                            </div>
+                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">BIXOLON</div>
+                            </div>
+                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">Honeywell</div>
+                            </div>
+                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">HIKVISION</div>
+                            </div>
+                            <div className="flex items-center justify-center p-4 bg-white rounded-xl border border-gray-100 hover:shadow-md transition-all group">
+                                <div className="text-gray-400 font-bold text-lg filter grayscale group-hover:grayscale-0 transition-all duration-300">SEWOO</div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Support & Contact */}
