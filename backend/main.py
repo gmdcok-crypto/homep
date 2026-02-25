@@ -66,8 +66,9 @@ def send_notification_email(quote: schemas.QuoteCreate):
         print(f"Failed to send email: {e}")
 
 async def send_telegram_notification(quote: schemas.QuoteCreate):
+    print(f"Attempting to send Telegram notification for {quote.name}...")
     if not all([TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID]) or TELEGRAM_CHAT_ID == "your_chat_id_here":
-        print("Telegram credentials not fully configured. Skipping telegram notification.")
+        print("Telegram credentials not fully configured (Token or Chat ID missing).")
         return
 
     message = (
@@ -87,15 +88,13 @@ async def send_telegram_notification(quote: schemas.QuoteCreate):
     }
 
     try:
-        async with httpx.AsyncClient() as client:
+        async with httpx.AsyncClient(timeout=10.0) as client:
             response = await client.post(url, json=payload)
+            print(f"Telegram API Response Status: {response.status_code}")
             response.raise_for_status()
             print("Telegram notification sent successfully")
     except Exception as e:
-        print(f"Failed to send Telegram notification: {e}")
-
-def run_async_notification(quote: schemas.QuoteCreate):
-    asyncio.run(send_telegram_notification(quote))
+        print(f"Failed to send Telegram notification: {str(e)}")
 
 # CORS configuration
 origins = [
@@ -123,8 +122,8 @@ def create_quote(quote: schemas.QuoteCreate, background_tasks: BackgroundTasks, 
     # Send email in background to avoid blocking response
     background_tasks.add_task(send_notification_email, quote)
     
-    # Send Telegram notification in background
-    background_tasks.add_task(run_async_notification, quote)
+    # Send Telegram notification in background (FastAPI handles async def directly)
+    background_tasks.add_task(send_telegram_notification, quote)
     
     return db_quote
 
