@@ -91,10 +91,36 @@ async def send_telegram_notification(quote: schemas.QuoteCreate):
         async with httpx.AsyncClient(timeout=10.0) as client:
             response = await client.post(url, json=payload)
             print(f"Telegram API Response Status: {response.status_code}")
+            if response.status_code != 200:
+                print(f"Telegram Error Response: {response.text}")
             response.raise_for_status()
             print("Telegram notification sent successfully")
     except Exception as e:
         print(f"Failed to send Telegram notification: {str(e)}")
+
+@app.get("/test-telegram/")
+async def test_telegram():
+    """Endpoint to manually test Telegram configuration"""
+    if not all([TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID]):
+        return {"status": "error", "message": "Missing credentials", "token_exists": bool(TELEGRAM_BOT_TOKEN), "chat_id_exists": bool(TELEGRAM_CHAT_ID)}
+    
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": "✅ 텔레그램 알림 설정 테스트 성공! 서버가 정상적으로 연결되었습니다.",
+        "parse_mode": "Markdown"
+    }
+    
+    try:
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            response = await client.post(url, json=payload)
+            return {
+                "status": "completed", 
+                "http_status": response.status_code,
+                "response": response.json()
+            }
+    except Exception as e:
+        return {"status": "failed", "error": str(e)}
 
 # CORS configuration
 origins = [
