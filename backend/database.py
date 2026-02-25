@@ -10,7 +10,11 @@ load_dotenv()
 # mysql+pymysql://<username>:<password>@<host>:<port>/<database_name>
 DATABASE_URL = os.getenv("DATABASE_URL", "mysql+pymysql://root:password@localhost:3306/mydatabase")
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    pool_recycle=3600,
+    pool_pre_ping=True
+)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

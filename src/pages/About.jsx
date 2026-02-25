@@ -3,13 +3,6 @@ import React, { useState } from 'react';
 const About = () => {
     const [activeTab, setActiveTab] = useState('greetings');
 
-    const historyData = [
-        { year: '2025', content: '블루컴 법인 설립 및 사업 개시' },
-        { year: '2025', content: '지능형 순번대기 시스템 솔루션 개발' },
-        { year: '2025', content: '바코드 프린터 및 RFID 특화 라인업 구축' },
-        { year: '2026', content: '산업별 통합 인쇄 매니지먼트 서비스 런칭' },
-        { year: '2026', content: '글로벌 파트너십 체결 및 솔루션 고도화' },
-    ];
 
     return (
         <div className="min-h-screen bg-white">
@@ -17,7 +10,7 @@ const About = () => {
             <div className="bg-gray-900 text-white relative h-[400px] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/digital_signage_bg.jpg"
+                        src="/images/about_banner.png"
                         alt="About Us Background"
                         className="w-full h-full object-cover opacity-40"
                     />
@@ -36,7 +29,7 @@ const About = () => {
             <div className="sticky top-16 bg-white border-b border-gray-100 z-40 shadow-sm">
                 <div className="container mx-auto px-4">
                     <div className="flex justify-center space-x-8 md:space-x-16">
-                        {['greetings', 'history', 'location'].map((tab) => (
+                        {['greetings', 'location'].map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
@@ -44,7 +37,6 @@ const About = () => {
                                     }`}
                             >
                                 {tab === 'greetings' && '인사말'}
-                                {tab === 'history' && '연혁'}
                                 {tab === 'location' && '오시는 길'}
                                 {activeTab === tab && (
                                     <span className="absolute bottom-0 left-0 right-0 h-1 bg-blue-600 rounded-t-full"></span>
@@ -80,8 +72,8 @@ const About = () => {
                             <div className="relative">
                                 <div className="aspect-[4/5] bg-gray-100 rounded-3xl overflow-hidden shadow-2xl">
                                     <img
-                                        src="/images/hospital_bg.jpg"
-                                        alt="CEO Greeting"
+                                        src="/images/about_vision.png.png"
+                                        alt="Bluecom Vision"
                                         className="w-full h-full object-cover"
                                     />
                                 </div>
@@ -93,23 +85,6 @@ const About = () => {
                     </div>
                 )}
 
-                {activeTab === 'history' && (
-                    <div className="max-w-3xl mx-auto animate-fadeIn">
-                        <div className="relative border-l-4 border-blue-50 ml-6 space-y-12 pb-10">
-                            {historyData.map((item, index) => (
-                                <div key={index} className="relative pl-12">
-                                    <div className="absolute -left-[22px] top-0 w-10 h-10 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center shadow-md">
-                                        <div className="w-3 h-3 bg-blue-600 rounded-full animate-pulse"></div>
-                                    </div>
-                                    <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                                        <span className="text-3xl font-black text-blue-600 mb-2 block">{item.year}</span>
-                                        <p className="text-xl text-gray-700 font-semibold">{item.content}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
 
                 {activeTab === 'location' && (
                     <div className="max-w-5xl mx-auto animate-fadeIn">
@@ -117,17 +92,11 @@ const About = () => {
                             {/* Map Placeholder */}
                             <div className="aspect-video bg-gray-50 flex items-center justify-center relative group">
                                 <img
-                                    src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=1200&q=80"
-                                    alt="Map Placeholder"
-                                    className="w-full h-full object-cover opacity-80"
+                                    src="/images/company_map.png"
+                                    alt="Naver Map Location"
+                                    className="w-full h-full object-cover"
                                 />
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-white px-8 py-4 rounded-full shadow-2xl flex items-center space-x-3 pointer-events-none">
-                                        <div className="w-4 h-4 bg-red-600 rounded-full animate-ping"></div>
-                                        <span className="text-xl font-bold text-gray-900">블루컴 본사 위치</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
@@ -141,8 +110,7 @@ const About = () => {
                                     주소 안내
                                 </h3>
                                 <p className="text-xl text-gray-700 font-medium leading-relaxed">
-                                    경기도 파주시 하우개길 109, 102동 1101호<br />
-                                    (야당동, 하우개마을 사계절)
+                                    부산광역시 북구 낙동대로 1570번길 3 2층
                                 </p>
                             </div>
                             <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">

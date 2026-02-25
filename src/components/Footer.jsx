@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const Footer = () => {
     return (
@@ -18,24 +20,23 @@ const Footer = () => {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Products</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-white">Mobile Printers</a></li>
-                            <li><a href="#" className="hover:text-white">Label Printers</a></li>
-                            <li><a href="#" className="hover:text-white">POS Printers</a></li>
+                            <li><NavLink to="/products/barcode-printer" className="hover:text-white transition-colors">라벨 프린터</NavLink></li>
+                            <li><NavLink to="/products/rfid-tag" className="hover:text-white transition-colors">RFID & TAG</NavLink></li>
+                            <li><NavLink to="/products/pos-printer" className="hover:text-white transition-colors">지능형 순번기기</NavLink></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Company</h4>
                         <ul className="space-y-2 text-sm text-gray-400">
-                            <li><a href="#" className="hover:text-white">About Us</a></li>
-                            <li><a href="#" className="hover:text-white">Contact</a></li>
-                            <li><a href="#" className="hover:text-white">Careers</a></li>
+                            <li><NavLink to="/about" className="hover:text-white transition-colors">회사소개</NavLink></li>
+                            <li><HashLink smooth to="/#support" className="hover:text-white transition-colors">고객지원 및 Contact</HashLink></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Contact</h4>
                         <p className="text-sm text-gray-400">
                             Email: bluecs@bluecs.co.kr<br />
-                            Tel: +82-70-7760-6271
+                            Tel: 070-7760-6271
                         </p>
                     </div>
                 </div>

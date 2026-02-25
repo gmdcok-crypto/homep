@@ -16,10 +16,6 @@ import Cctv from './pages/Cctv';
 import CctvDetail from './pages/CctvDetail';
 import PosPrinter from './pages/PosPrinter';
 import PosPrinterDetail from './pages/PosPrinterDetail';
-import BarcodeScanner from './pages/BarcodeScanner';
-import BarcodeScannerDetail from './pages/BarcodeScannerDetail';
-import CardPrinter from './pages/CardPrinter';
-import CardPrinterDetail from './pages/CardPrinterDetail';
 import About from './pages/About';
 import Admin from './pages/Admin';
 import ScrollToTop from './components/ScrollToTop';
@@ -51,10 +47,6 @@ function App() {
           <Route path="/products/cctv/:id" element={<CctvDetail />} />
           <Route path="/products/pos-printer" element={<PosPrinter />} />
           <Route path="/products/pos-printer/:id" element={<PosPrinterDetail />} />
-          <Route path="/products/barcode-scanner" element={<BarcodeScanner />} />
-          <Route path="/products/barcode-scanner/:id" element={<BarcodeScannerDetail />} />
-          <Route path="/products/card-printer" element={<CardPrinter />} />
-          <Route path="/products/card-printer/:id" element={<CardPrinterDetail />} />
           <Route path="/about" element={<About />} />
 
           {/* Blue Solutions Routes */}

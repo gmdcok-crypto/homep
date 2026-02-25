@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +13,7 @@ const Header = () => {
         {
             name: '제품소개',
             href: '/#products',
+            isHash: true,
             subLinks: [
                 { name: '라벨 프린터', href: '/products/barcode-printer' },
                 { name: 'RFID & TAG', href: '/products/rfid-tag' },
@@ -18,12 +21,10 @@ const Header = () => {
                 { name: '컴퓨터 & 주변기기', href: '/products/computer-peripherals' },
                 { name: 'CCTV', href: '/products/cctv' },
                 { name: '지능형 순번기기', href: '/products/pos-printer' },
-                { name: '바코드 스캐너', href: '/products/barcode-scanner' },
-                { name: '카드 프린터', href: '/products/card-printer' },
             ]
         },
-        { name: '솔루션', href: '/#solutions' },
-        { name: '고객지원', href: '/#support' },
+        { name: '솔루션', href: '/#solutions', isHash: true },
+        { name: '고객지원', href: '/#support', isHash: true },
         { name: '회사소개', href: '/about' },
     ];
 
@@ -33,42 +34,54 @@ const Header = () => {
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <div className="flex-shrink-0 flex items-center">
-                        <a href="/" className="flex items-end text-3xl font-bold tracking-tight group">
+                        <NavLink to="/" className="flex items-end text-3xl font-bold tracking-tight group">
                             <span className="text-[#002060] dark:text-blue-400">BLUE</span>
                             <div className="relative">
                                 <span className="text-[#002060] dark:text-blue-400">COM</span>
                                 <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-gradient-to-br from-blue-400 to-blue-700 rounded-full border-2 border-white group-hover:scale-110 transition-transform"></span>
                             </div>
-                        </a>
+                        </NavLink>
                     </div>
 
                     <div className="hidden md:block h-full">
                         <div className="ml-10 flex items-center space-x-4 h-full">
                             {navLinks.map((link) => (
                                 <div key={link.name} className="relative group h-full flex items-center">
-                                    <a
-                                        href={link.href}
-                                        className="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-lg font-bold transition-colors duration-200 uppercase tracking-wide flex items-center"
-                                    >
-                                        {link.name}
-                                        {link.subLinks && (
-                                            <svg className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        )}
-                                    </a>
+                                    {link.isHash ? (
+                                        <HashLink
+                                            smooth
+                                            to={link.href}
+                                            className="text-gray-700 hover:text-primary px-3 py-2 rounded-md text-lg font-bold transition-colors duration-200 uppercase tracking-wide flex items-center"
+                                        >
+                                            {link.name}
+                                            {link.subLinks && (
+                                                <svg className="ml-1 w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            )}
+                                        </HashLink>
+                                    ) : (
+                                        <NavLink
+                                            to={link.href}
+                                            className={({ isActive }) =>
+                                                `text-gray-700 hover:text-primary px-3 py-2 rounded-md text-lg font-bold transition-colors duration-200 uppercase tracking-wide flex items-center ${isActive ? 'text-primary' : ''}`
+                                            }
+                                        >
+                                            {link.name}
+                                        </NavLink>
+                                    )}
 
                                     {link.subLinks && (
                                         <div className="absolute top-full left-0 w-48 bg-white border border-gray-100 rounded-b-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top -translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
                                             <div className="py-1">
                                                 {link.subLinks.map((sub) => (
-                                                    <a
+                                                    <NavLink
                                                         key={sub.name}
-                                                        href={sub.href}
+                                                        to={sub.href}
                                                         className="block px-4 py-3 text-[15px] text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors border-b last:border-0 border-gray-50 font-medium"
                                                     >
                                                         {sub.name}
-                                                    </a>
+                                                    </NavLink>
                                                 ))}
                                             </div>
                                         </div>
@@ -108,22 +121,37 @@ const Header = () => {
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
                             <React.Fragment key={link.name}>
-                                <a
-                                    href={link.href}
-                                    className="text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-blue-400 block px-3 py-2 rounded-md text-xl font-medium"
-                                >
-                                    {link.name}
-                                </a>
+                                {link.isHash ? (
+                                    <HashLink
+                                        smooth
+                                        to={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className="text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-blue-400 block px-3 py-2 rounded-md text-xl font-medium"
+                                    >
+                                        {link.name}
+                                    </HashLink>
+                                ) : (
+                                    <NavLink
+                                        to={link.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className={({ isActive }) =>
+                                            `text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-blue-400 block px-3 py-2 rounded-md text-xl font-medium ${isActive ? 'text-primary' : ''}`
+                                        }
+                                    >
+                                        {link.name}
+                                    </NavLink>
+                                )}
                                 {link.subLinks && (
                                     <div className="pl-6 space-y-1 pb-2">
                                         {link.subLinks.map((sub) => (
-                                            <a
+                                            <NavLink
                                                 key={sub.name}
-                                                href={sub.href}
+                                                to={sub.href}
+                                                onClick={() => setIsOpen(false)}
                                                 className="text-gray-500 hover:text-primary block px-3 py-2 rounded-md text-lg font-medium"
                                             >
                                                 • {sub.name}
-                                            </a>
+                                            </NavLink>
                                         ))}
                                     </div>
                                 )}

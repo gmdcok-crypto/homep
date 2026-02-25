@@ -1,10 +1,11 @@
 import React from 'react';
+const supportContactImg = "/images/support_contact.png";
 
 const SupportSection = () => {
     return (
         <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
                     {/* News */}
                     <div>
                         <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 font-display">최신 뉴스</h2>
@@ -33,39 +34,55 @@ const SupportSection = () => {
                         </a>
                     </div>
 
-                    {/* Support */}
+                    {/* Support & Contact */}
                     <div>
-                        <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 font-display">고객지원 & 다운로드</h2>
-                        <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                            <p className="text-gray-600 mb-8 leading-relaxed">
-                                제품 드라이버, 매뉴얼, 소프트웨어를 쉽고 빠르게 찾아보세요.<br />
-                                블루컴의 전문가들이 최상의 기술 지원을 약속합니다.
-                            </p>
-                            <div className="space-y-5">
-                                <div className="flex items-center group cursor-pointer">
-                                    <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-600 transition-colors">
-                                        <svg className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        <h2 className="text-2xl font-bold text-gray-900 mb-6 border-b pb-2 font-display">고객지원 및 CONTACT</h2>
+                        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col lg:flex-row items-stretch gap-0 overflow-hidden">
+                            <div className="flex-1 p-8 space-y-6 w-full">
+                                <div className="flex items-center">
+                                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mr-5 text-blue-600 flex-shrink-0">
+                                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
                                     </div>
-                                    <a href="#" className="text-gray-700 group-hover:text-blue-600 font-semibold text-lg transition-colors">드라이버 다운로드</a>
+                                    <div>
+                                        <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-0.5">SALES</p>
+                                        <a href="mailto:bluecs@bluecs.co.kr" className="text-lg sm:text-xl font-bold text-gray-900 hover:text-primary transition-colors">bluecs@bluecs.co.kr</a>
+                                    </div>
                                 </div>
-                                <div className="flex items-center group cursor-pointer">
-                                    <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-600 transition-colors">
-                                        <svg className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+
+                                <div className="flex items-center">
+                                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mr-5 text-blue-600 flex-shrink-0">
+                                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.364-6.364l-.707-.707M6.736 14.5a3.5 3.5 0 117.028 0 3.5 3.5 0 01-7.028 0z" />
                                         </svg>
                                     </div>
-                                    <a href="#" className="text-gray-700 group-hover:text-blue-600 font-semibold text-lg transition-colors">사용자 매뉴얼</a>
+                                    <div>
+                                        <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-0.5">TECH</p>
+                                        <a href="mailto:bluecs@bluecs.co.kr" className="text-lg sm:text-xl font-bold text-gray-900 hover:text-primary transition-colors">bluecs@bluecs.co.kr</a>
+                                    </div>
                                 </div>
-                                <div className="flex items-center group cursor-pointer">
-                                    <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-600 transition-colors">
-                                        <svg className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+
+                                <div className="flex items-center">
+                                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mr-5 text-blue-600 flex-shrink-0">
+                                        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                         </svg>
                                     </div>
-                                    <a href="#" className="text-gray-700 group-hover:text-blue-600 font-semibold text-lg transition-colors">고객 지원 센터</a>
+                                    <div>
+                                        <p className="text-xs text-gray-400 uppercase font-bold tracking-wider mb-0.5">TEL</p>
+                                        <a href="tel:070-7760-6271" className="text-xl sm:text-2xl font-black text-gray-900 hover:text-primary transition-colors">070-7760-6271</a>
+                                    </div>
                                 </div>
+                            </div>
+
+                            {/* Visual Asset */}
+                            <div className="w-full lg:w-48 xl:w-64 flex-shrink-0 relative overflow-hidden hidden sm:block">
+                                <img
+                                    src={supportContactImg}
+                                    alt="Technical Support"
+                                    className="w-full h-full object-cover object-center absolute inset-0"
+                                />
                             </div>
                         </div>
                     </div>

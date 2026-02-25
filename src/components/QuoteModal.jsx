@@ -31,7 +31,11 @@ const QuoteModal = ({ isOpen, onClose, productName }) => {
         };
 
         try {
-            const response = await fetch('http://localhost:8000/quotes/', {
+            const apiUrl = window.location.hostname === 'localhost'
+                ? 'http://localhost:8000/quotes/'
+                : 'https://homep-production.up.railway.app/quotes/';
+
+            const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

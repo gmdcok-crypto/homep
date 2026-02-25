@@ -10,6 +10,8 @@ from dotenv import load_dotenv
 import models
 import schemas
 import database
+import httpx
+import asyncio
 
 load_dotenv()
 
@@ -24,6 +26,10 @@ SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
 SMTP_USER = os.getenv("SMTP_USER")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
+
+# Telegram Configuration
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 def send_notification_email(quote: schemas.QuoteCreate):
     if not all([SMTP_USER, SMTP_PASSWORD, ADMIN_EMAIL]):
@@ -59,6 +65,38 @@ def send_notification_email(quote: schemas.QuoteCreate):
     except Exception as e:
         print(f"Failed to send email: {e}")
 
+async def send_telegram_notification(quote: schemas.QuoteCreate):
+    if not all([TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID]) or TELEGRAM_CHAT_ID == "your_chat_id_here":
+        print("Telegram credentials not fully configured. Skipping telegram notification.")
+        return
+
+    message = (
+        f"🔔 *새로운 상담 문의 접수*\n\n"
+        f"👤 *성함/담당자:* {quote.name}\n"
+        f"🏢 *회사명:* {quote.company or 'N/A'}\n"
+        f"📞 *연락처:* {quote.phone}\n"
+        f"📧 *이메일:* {quote.email or 'N/A'}\n\n"
+        f"💬 *문의 내용:*\n{quote.message or '내용 없음'}"
+    )
+
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": TELEGRAM_CHAT_ID,
+        "text": message,
+        "parse_mode": "Markdown"
+    }
+
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(url, json=payload)
+            response.raise_for_status()
+            print("Telegram notification sent successfully")
+    except Exception as e:
+        print(f"Failed to send Telegram notification: {e}")
+
+def run_async_notification(quote: schemas.QuoteCreate):
+    asyncio.run(send_telegram_notification(quote))
+
 # CORS configuration
 origins = [
     "http://localhost:5173",
@@ -84,6 +122,9 @@ def create_quote(quote: schemas.QuoteCreate, background_tasks: BackgroundTasks, 
     
     # Send email in background to avoid blocking response
     background_tasks.add_task(send_notification_email, quote)
+    
+    # Send Telegram notification in background
+    background_tasks.add_task(run_async_notification, quote)
     
     return db_quote
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const products = [
     {
         id: 'MH261T',
-        category: 'label',
+        category: 'industrial',
         name: 'MH261T',
         title: '6인치 열전사 산업용 라벨 프린터',
         description: 'MH261T는 프리미엄 프린트 헤드 기술과 빠른 프로세서, 넉넉한 메모리 용량을 갖추고 있어 고품질 라벨을 빠른 속도로 인쇄할 수 있는 6인치 산업용 라벨 프린터입니다.',
@@ -17,7 +17,7 @@ export const products = [
     },
     {
         id: 'MB241T',
-        category: 'label',
+        category: 'industrial',
         name: 'MB241T',
         title: '4인치 열전사 산업용 라벨 프린터',
         description: 'MB 시리즈는 견고한 전 금속 메커니즘으로 대량 인쇄 시에도 뛰어난 내구성을 보장하며, 두꺼운 행택 등 특수 용지도 완벽하게 처리합니다. 라이너리스, 필오프, 리와인더, 커터 등 다양한 옵션을 지원하여 비즈니스 환경에 최적화할 수 있으며, 특히 MB241 시리즈는 혁신적인 디자인으로 "Red Dot Award: Product Design 2025"를 수상했습니다.',
@@ -31,7 +31,7 @@ export const products = [
     },
     {
         id: 'LABEL-SUPPLIES',
-        category: 'receipt',
+        category: 'consumables',
         name: '라벨용지',
         title: '고품질 라벨 및 리본 소모품',
         description: '감열방식부터 열전사방식까지 다양한 인쇄 환경에 최적화된 라벨 솔루션을 제공합니다. 선명한 인쇄 품질과 강력한 접착력으로 물류, 제조, 소매 등 다양한 산업 현장에서 믿고 사용할 수 있습니다.',
@@ -40,7 +40,7 @@ export const products = [
     },
     {
         id: 'RIBBON-SUPPLIES',
-        category: 'receipt',
+        category: 'consumables',
         name: '리본',
         title: '고품질 열전사 리본',
         description: '고품질 레진 및 왁스 성분을 함유하여 가혹한 환경에서도 뛰어난 인쇄 내구성을 보장합니다. 다양한 라벨 재질과 완벽하게 호환되어 귀사의 비즈니스에 최상의 결과물을 제공합니다.',
@@ -49,7 +49,7 @@ export const products = [
     },
     {
         id: 'LABEL-REWINDER',
-        category: 'receipt',
+        category: 'consumables',
         name: '라벨리와인더',
         title: '자동 라벨 리와인더 (되감기 장치)',
         description: '대량 인쇄 시 출력되는 라벨을 자동으로 깔끔하게 되감아주는 장치입니다. 조절 가능한 텐션 제어와 고속 모터를 탑재하여 작업 효율을 극대화하며 모든 바코드 프린터와 호환됩니다.',
@@ -58,7 +58,7 @@ export const products = [
     },
     {
         id: 'ML241P',
-        category: 'label',
+        category: 'industrial',
         name: 'ML241P',
         title: '소형 산업용 라벨 프린터',
         description: '공간 절약형 디자인과 강력한 성능을 겸비한 ML241P는 제한된 작업 공간에서도 고속 인쇄가 가능하며, 내구성이 뛰어나 다양한 산업 환경에 적합합니다.',
@@ -71,7 +71,7 @@ export const products = [
     },
     {
         id: 'TTP-247',
-        category: 'label',
+        category: 'industrial',
         name: 'TTP-247',
         title: '고성능 데스크탑 라벨 프린터',
         description: '동급 최강의 성능과 내구성을 자랑하는 TTP-247은 초당 7인치의 빠른 인쇄 속도와 견고한 듀얼 모터 디자인을 갖추고 있어 다양한 라벨링 작업에 최적화되어 있습니다.',
@@ -84,7 +84,7 @@ export const products = [
     },
     {
         id: 'ZT411',
-        category: 'label',
+        category: 'industrial',
         name: 'ZT411',
         title: 'Zebra 고성능 산업용 라벨 프린터',
         description: '견고한 금속 프레임과 직관적인 터치 디스플레이를 갖춘 ZT411은 다양한 산업 환경에서 안정적인 인쇄 성능을 제공합니다.',
@@ -97,7 +97,7 @@ export const products = [
     },
     {
         id: 'ZD421',
-        category: 'label',
+        category: 'industrial',
         name: 'ZD421',
         title: 'Zebra 고성능 데스크탑 라벨 프린터',
         description: '직관적인 인터페이스와 유연한 기능을 갖춘 ZD421은 헬스케어, 소매, 제조 등 다양한 환경에 적합한 4인치 데스크탑 프린터입니다.',
@@ -107,13 +107,13 @@ export const products = [
 ];
 
 const BarcodePrinter = () => {
-    const [filter, setFilter] = useState('label'); // Default to 'label' (Label Printer)
+    const [filter, setFilter] = useState('all'); // Default to 'all'
 
     const filteredProducts = filter === 'all'
         ? [...products].sort((a, b) => {
-            // Priority: 'label' first, then 'receipt' (or others)
-            if (a.category === 'label' && b.category !== 'label') return -1;
-            if (a.category !== 'label' && b.category === 'label') return 1;
+            // Priority: 'industrial' first, then 'consumables'
+            if (a.category === 'industrial' && b.category !== 'industrial') return -1;
+            if (a.category !== 'industrial' && b.category === 'industrial') return 1;
             return 0; // Keep original order within the same category
         })
         : products.filter(product => product.category === filter);
@@ -159,12 +159,6 @@ const BarcodePrinter = () => {
                             산업용 프린터
                         </button>
                         <button
-                            onClick={() => setFilter('desktop')}
-                            className={`py-4 text-lg font-bold border-b-4 transition-colors whitespace-nowrap ${filter === 'desktop' ? 'border-orange-600 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
-                        >
-                            데스크탑 프린터
-                        </button>
-                        <button
                             onClick={() => setFilter('consumables')}
                             className={`py-4 text-lg font-bold border-b-4 transition-colors whitespace-nowrap ${filter === 'consumables' ? 'border-orange-600 text-orange-600' : 'border-transparent text-gray-500 hover:text-gray-800'}`}
                         >
@@ -181,8 +175,8 @@ const BarcodePrinter = () => {
                         <Link to={`/products/barcode-printer/${product.id}`} key={product.id} className="group border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col bg-white">
                             {/* Product Image Area */}
                             <div className="h-80 w-full bg-gray-50 flex items-center justify-center p-8 group-hover:bg-gray-100 transition-colors relative">
-                                {/* Manufacturer Logo Overlay (Only for Label Printers) */}
-                                {product.category === 'label' && (
+                                {/* Manufacturer Logo Overlay (Only for Printers) */}
+                                {product.category === 'industrial' && (
                                     <div className="absolute top-4 right-4 z-10">
                                         <img
                                             src={['ZT411', 'ZD421'].includes(product.id) ? "/images/zebra_logo.jpg" : "/images/tsc_logo.JPG"}
