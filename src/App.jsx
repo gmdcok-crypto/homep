@@ -26,6 +26,11 @@ import SmartHospital from './pages/solutions/SmartHospital';
 import DigitalSignage from './pages/solutions/DigitalSignage';
 import CctvSecurity from './pages/solutions/CctvSecurity';
 import ItInfrastructure from './pages/solutions/ItInfrastructure';
+import SmartMeal from './pages/solutions/SmartMeal';
+import SmartMealPwaQr from './pages/solutions/SmartMealPwaQr';
+import SmartMealZeroHardware from './pages/solutions/SmartMealZeroHardware';
+import SmartMealCloudSettlement from './pages/solutions/SmartMealCloudSettlement';
+import SmartMealFlow from './pages/solutions/SmartMealFlow';
 
 function App() {
   return (
@@ -55,6 +60,11 @@ function App() {
           <Route path="/solutions/signage" element={<DigitalSignage />} />
           <Route path="/solutions/security" element={<CctvSecurity />} />
           <Route path="/solutions/it-infra" element={<ItInfrastructure />} />
+          <Route path="/solutions/smartmeal" element={<SmartMeal />} />
+          <Route path="/solutions/smartmeal/pwa-qr" element={<SmartMealPwaQr />} />
+          <Route path="/solutions/smartmeal/zero-hardware" element={<SmartMealZeroHardware />} />
+          <Route path="/solutions/smartmeal/cloud-settlement" element={<SmartMealCloudSettlement />} />
+          <Route path="/solutions/smartmeal/flow" element={<SmartMealFlow />} />
         </Routes>
       </Layout>
       <ToastContainer position="top-right" autoClose={3000} />

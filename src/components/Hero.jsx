@@ -5,12 +5,11 @@ const Hero = () => {
         {
             id: 1,
             type: "image",
-            image: "/images/hero_it_solution_clean.png",
-            title: "블루컴 (BLUECOM)",
-            description: "IT TOTAL SOLUTION · ONESTOP SOLUTION PROVIDER\n통합 서비스로 귀하의 미래를 앞당기십시오.",
+            image: "/images/hero_bluemeal_main.jpg",
+            title: "스마트 급식 솔루션, 스마트밀",
+            description: "비용은 최소, 효율은 MAX! PWA 기반 스마트 식수 관리.\n고가의 장비 없이 스마트하게 시작하세요.",
             cta: "솔루션 보기",
-            hideButtons: true,
-            duration: 4000
+            duration: 5000
         },
         {
             id: 2,

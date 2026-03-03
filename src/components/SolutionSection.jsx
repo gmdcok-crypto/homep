@@ -5,6 +5,7 @@ const SolutionSection = () => {
     const solutions = [
         { title: "라벨 & RFID", image: "/images/solutions/logistics-hero.jpg", link: "/solutions/logistics" },
         { title: "지능형 순번대기\n& 원격진료", image: "/images/solutions/hospital-hero.jpg", link: "/solutions/medical" },
+        { title: "스마트 급식 (SmartMeal)", image: "/images/hero_bluemeal_main.jpg", link: "/solutions/smartmeal" },
         { title: "디지털 광고", image: "/images/solutions/signage-hero.jpg", link: "/solutions/signage" },
         { title: "지능형 영상 보안 (CCTV)", image: "/images/solutions/cctv-hero.jpg", link: "/solutions/security" },
         { title: "IT 인프라 & 유지보수", image: "/images/solutions/it-infra-hero.jpg", link: "/solutions/it-infra" }
