@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
     const slides = [
@@ -8,7 +9,7 @@ const Hero = () => {
             image: "/images/hero_bluemeal_main.jpg",
             title: "스마트 급식 솔루션, 스마트밀",
             description: "비용은 최소, 효율은 MAX! PWA 기반 스마트 식수 관리.\n고가의 장비 없이 스마트하게 시작하세요.",
-            cta: "솔루션 보기",
+            link: "/solutions/smartmeal",
             duration: 5000
         },
         {
@@ -17,7 +18,7 @@ const Hero = () => {
             image: "/images/hospital_bg.jpg",
             title: "지능형 순번 대기 시스템",
             description: "접수, 수납, 입퇴원 창구의 통합 모니터링 및 스마트 안내 시스템.",
-            cta: "솔루션 보기"
+            link: "/solutions/medical"
         },
         {
             id: 3,
@@ -25,7 +26,7 @@ const Hero = () => {
             image: "/images/factory_bg.jpg",
             title: "라벨, RFID 솔루션",
             description: "생산 라인에서 즉시 출력하고 적용하는 고성능 바코드 프린팅.",
-            cta: "제품 보기"
+            link: "/solutions/logistics"
         },
         {
             id: 4,
@@ -33,7 +34,7 @@ const Hero = () => {
             image: "/images/server_room_bg.jpg",
             title: "IT 인프라 및 네트워크 유지보수",
             description: "서버, 네트워크, 컴퓨터 시스템의 안정적인 운영을 위한 통합 유지보수.",
-            cta: "서비스 문의"
+            link: "/solutions/it-infra"
         },
         {
             id: 5,
@@ -41,7 +42,7 @@ const Hero = () => {
             image: "/images/digital_signage_bg.jpg",
             title: "디지털 홍보 시스템",
             description: "생생한 디스플레이를 통한 효과적인 정보 전달 및 브랜드 홍보.",
-            cta: "솔루션 보기"
+            link: "/solutions/signage"
         }
     ];
 
@@ -65,7 +66,7 @@ const Hero = () => {
             {slides.map((slide, index) => (
                 <div
                     key={slide.id}
-                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                         }`}
                 >
                     {/* Background */}
@@ -87,14 +88,11 @@ const Hero = () => {
                             <p className="text-lg md:text-2xl mb-8 text-gray-200 leading-relaxed whitespace-pre-line">
                                 {slide.description}
                             </p>
-                            {!slide.hideButtons && (
+                            {!slide.hideButtons && index === currentSlide && (
                                 <div className="flex space-x-4">
-                                    <a href="#" className="bg-primary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
-                                        {slide.cta}
-                                    </a>
-                                    <button className="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                                    <Link to={slide.link} className="bg-primary hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
                                         자세히 알아보기
-                                    </button>
+                                    </Link>
                                 </div>
                             )}
                         </div>
@@ -133,3 +131,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
